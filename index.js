@@ -8,11 +8,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-//user: dbuser1
-//pass: OAKSwXkVqhx9QewC
-
 const uri =
-  "mongodb+srv://dbuser1:OAKSwXkVqhx9QewC@node-mongo-crud.ybwscxn.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://<user>:<password>@node-mongo-crud.ybwscxn.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
