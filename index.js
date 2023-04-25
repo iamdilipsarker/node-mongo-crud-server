@@ -9,7 +9,9 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@node-mongo-crud.ybwscxn.mongodb.net/?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@node-mongo-crud.ybwscxn.mongodb.net/?retryWrites=true&w=majority`;
+
+const uri = "mongodb://127.0.0.1:27017";
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -18,6 +20,8 @@ const client = new MongoClient(uri, {
 });
 async function run() {
   try {
+    await client.connect();
+    console.log("db connected");
     const userCollection = client.db("node-mongo-crud").collection("users");
 
     app.get("/users", async (req, res) => {
